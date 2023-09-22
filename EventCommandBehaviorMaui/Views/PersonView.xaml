@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EventCommandBehaviorMaui.Views.PersonView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:EventCommandBehaviorMaui.Models"
+    xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:EventCommandBehaviorMaui.ViewModels"
+    Title="PersonView"
+    x:DataType="vm:PersonViewModel">
+    <VerticalStackLayout>
+        <Grid RowDefinitions="50, *">
+            <Button Command="{Binding AddPersonCommand}" Text="Add Person" />
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Persons}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Person">
+
+                        <Entry Text="{Binding Name}">
+                            <Entry.Behaviors>
+                                <tk:EventToCommandBehavior Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PersonViewModel}}, Path=TestCommand}" EventName="TextChanged" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

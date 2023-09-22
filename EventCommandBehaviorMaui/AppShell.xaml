@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="EventCommandBehaviorMaui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:EventCommandBehaviorMaui"
+    xmlns:v="clr-namespace:EventCommandBehaviorMaui.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Person"
+        ContentTemplate="{DataTemplate v:PersonView}"
+        FlyoutItemIsVisible="False"
+        Route="Person" />
+
+</Shell>
